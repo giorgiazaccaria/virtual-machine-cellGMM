@@ -10,18 +10,16 @@
 ## in the Main Article, called "Data for Figure Reproducibility.RData", which can 
 ## be used to fully reproduce Figures 1 and 2.
 
-## ATTENTION: OPEN THIS SCRIPT FROM THE WORKING DIRECTORY OF "Code for Technometrics Reproducibility".
+setwd("/workspaces/virtual-machine-cellGMM")
 load("Data for Figure Reproducibility.RData")
 stat_ggplot
 stat_ggplotscen3
 
-## INSTALL PACKAGES (IF NECESSARY)
-# install.packages("ggplot2")
-# install.packages("tidyr")
-# install.packages("dplyr")
 library(ggplot2)
 library(tidyr)
 library(dplyr)
+install.packages("patchwork")
+library(patchwork)
 ## PREPARE THE OBJECT FOR ggplot
 df_long <- stat_ggplot %>%
   pivot_longer(cols = c(MR, MSEmu1, MSEmu2, KLsigma1, KLsigma2), 
@@ -48,15 +46,17 @@ metric_labels <- c("MR" = "mMR",
 
 # MR
 df_tot_MR <- df_tot[which(df_tot$Metric == "MR"), ]
-p <- ggplot(df_tot_MR, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model)) +
+p <- ggplot(df_tot_MR, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model, linetype = Model)) +
   geom_line() + 
   geom_point() +
   scale_shape_manual(values = c(16, 17, 18, 19, 15, 7, 8, 9)) +
-  facet_wrap(vars(Scenario, Metric), scales = "free", 
-             labeller = labeller(Metric = as_labeller(metric_labels, label_parsed))) +  
+  scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash", "1234", "F2")) +
+  facet_wrap(vars(Scenario), scales = "free",
+          labeller = labeller(Metric = as_labeller(label_parsed))) +  
   scale_x_discrete(breaks = c(0, 5, 10), labels = c(0, 5, 10)) +  
   # scale_y_continuous(trans = "log", labels = scales::label_number())) +
-  labs(x = "% of outlying values", y = "") +
+  xlab("% of outlying values") +
+  ylab("mMR") +
   theme(strip.text = element_text(size = 13),
         legend.text = element_text(size = 13),
         legend.position = "bottom",
@@ -65,24 +65,100 @@ p
 
 # PARAMETERS
 df_tot_param <- df_tot[which(df_tot$Metric != "MR"), ]
-p <- ggplot(df_tot_param, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model)) +
+df_tot_param <- df_tot_param %>%
+  mutate(ScenarioMetric = paste(Scenario, Metric, sep = "_"))
+df_tot_param$ScenarioMetric <- factor(df_tot_param$ScenarioMetric, levels = c(
+  "Scenario 1_MSEmu1", "Scenario 1_MSEmu2", "Scenario 2_MSEmu1", "Scenario 2_MSEmu2",
+  "Scenario 3_MSEmu1", "Scenario 3_MSEmu2", "Scenario 3_MSEmu3", "Scenario 3_MSEmu4",
+  "Scenario 1_KLsigma1", "Scenario 1_KLsigma2", "Scenario 2_KLsigma1", "Scenario 2_KLsigma2",
+  "Scenario 3_KLsigma1", "Scenario 3_KLsigma2", "Scenario 3_KLsigma3", "Scenario 3_KLsigma4"))
+
+df_tot_param <- df_tot_param %>%
+    mutate(Type = ifelse(grepl("^MSE", Metric), "MSE", "KL"))
+df_MSE <- df_tot_param %>% filter(Type == "MSE")
+df_KL  <- df_tot_param %>% filter(Type == "KL")
+
+custom_labels <- c(
+  "Scenario 1_MSEmu1" = "Scenario 1 \n g = 1",
+  "Scenario 1_MSEmu2" = "Scenario 1 \n g = 2",
+  "Scenario 2_MSEmu1" = "Scenario 2 \n g = 1",
+  "Scenario 2_MSEmu2" = "Scenario 2 \n g = 2",
+  "Scenario 3_MSEmu1" = "Scenario 3 \n g = 1",
+  "Scenario 3_MSEmu2" = "Scenario 3 \n g = 2",
+  "Scenario 3_MSEmu3" = "Scenario 3 \n g = 3",
+  "Scenario 3_MSEmu4" = "Scenario 3 \n g = 4",
+  "Scenario 1_KLsigma1" = "Scenario 1 \n g = 1",
+  "Scenario 1_KLsigma2" = "Scenario 1 \n g = 2",
+  "Scenario 2_KLsigma1" = "Scenario 2 \n g = 1",
+  "Scenario 2_KLsigma2" = "Scenario 2 \n g = 2",
+  "Scenario 3_KLsigma1" = "Scenario 3 \n g = 1",
+  "Scenario 3_KLsigma2" = "Scenario 3 \n g = 2",
+  "Scenario 3_KLsigma3" = "Scenario 3 \n g = 3",
+  "Scenario 3_KLsigma4" = "Scenario 3 \n g = 4"
+)
+
+df_MSE_row1 <- df_MSE %>%
+  filter(ScenarioMetric %in% c("Scenario 1_MSEmu1", "Scenario 1_MSEmu2", 
+                               "Scenario 2_MSEmu1", "Scenario 2_MSEmu2"))
+pMSE_row1 <- ggplot(df_MSE_row1, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model, linetype = Model)) +
   geom_line() + 
   geom_point() +
   scale_shape_manual(values = c(16, 17, 18, 19, 15, 7, 8, 9)) +
-  facet_wrap(vars(Scenario, Metric), scales = "free", 
-             labeller = labeller(Metric = as_labeller(metric_labels, label_parsed))) +  
-  scale_x_discrete(breaks = c(0, 5, 10), labels = c(0, 5, 10)) +  
+  scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash", "1234", "F2")) +
+  facet_wrap(vars(ScenarioMetric), scales = "free", nrow = 1, 
+             labeller = labeller(ScenarioMetric = as_labeller(custom_labels))) +  
   scale_y_continuous(trans = "log10", labels = scales::label_number()) +
-  labs(x = "% of outlying values", y = "") +
+  labs(x = "", y = expression(log[10](MSE*mu[g]))) +
   theme(strip.text = element_text(size = 13),
         legend.text = element_text(size = 13),
-        legend.position = "bottom",
-        axis.text.x = element_text(angle = 0, hjust = 0.5))
-p
+        legend.position = "none")
+df_MSE_row2 <- df_MSE %>%
+  filter(!ScenarioMetric %in% c("Scenario 1_MSEmu1", "Scenario 1_MSEmu2", 
+                                "Scenario 2_MSEmu1", "Scenario 2_MSEmu2"))
+pMSE_row2 <- ggplot(df_MSE_row2, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model, linetype = Model)) +
+  geom_line() + 
+  geom_point() +
+  scale_shape_manual(values = c(16, 17, 18, 19, 15, 7, 8, 9)) +
+  scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash", "1234", "F2")) +
+  facet_wrap(vars(ScenarioMetric), scales = "free", nrow = 1, 
+             labeller = labeller(ScenarioMetric = as_labeller(custom_labels))) +  
+  scale_y_continuous(trans = "log10", labels = scales::label_number()) +
+  labs(x = "", y = expression(log[10](MSE*mu[g])),) +
+  theme(strip.text = element_text(size = 13),
+        legend.text = element_text(size = 13),
+        legend.position = "none")
 
+df_KL_row1 <- df_KL %>%
+  filter(ScenarioMetric %in% c("Scenario 1_KLsigma1", "Scenario 1_KLsigma2",
+                               "Scenario 2_KLsigma1", "Scenario 2_KLsigma2"))
+pKL_row1 <- ggplot(df_KL_row1, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model, linetype = Model)) +
+  geom_line() + 
+  geom_point() +
+  scale_shape_manual(values = c(16, 17, 18, 19, 15, 7, 8, 9)) +
+  scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash", "1234", "F2")) +
+  facet_wrap(vars(ScenarioMetric), scales = "free", nrow = 1, 
+             labeller = labeller(ScenarioMetric = as_labeller(custom_labels))) +
+  scale_y_continuous(trans = "log10", labels = scales::label_number()) +
+  labs(x = "", y = expression(log[10](KL*Sigma[g]))) +
+  theme(strip.text = element_text(size = 13),
+        legend.text = element_text(size = 13),
+        legend.position = "none") 
 
+df_KL_row2 <- df_KL %>%
+  filter(!ScenarioMetric %in% c("Scenario 1_KLsigma1", "Scenario 1_KLsigma2",
+                                "Scenario 2_KLsigma1", "Scenario 2_KLsigma2"))
+pKL_row2 <- ggplot(df_KL_row2, aes(x = Outlier, y = Value, color = Model, group = Model, shape = Model, linetype = Model)) +
+  geom_line() + 
+  geom_point() +
+  scale_shape_manual(values = c(16, 17, 18, 19, 15, 7, 8, 9)) +
+  scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash", "1234", "F2")) +
+  facet_wrap(vars(ScenarioMetric), scales = "free", nrow = 1, 
+             labeller = labeller(ScenarioMetric = as_labeller(custom_labels))) +
+  scale_y_continuous(trans = "log10", labels = scales::label_number()) +
+  labs(x = "% of outlying values", y = expression(log[10](KL*Sigma[g]))) +
+  theme(strip.text = element_text(size = 13),
+        legend.text = element_text(size = 13),
+        legend.position = "bottom")  
 
-
-
-
-
+p_combined <- pMSE_row1 / pMSE_row2/ pKL_row1 / pKL_row2
+p_combined
