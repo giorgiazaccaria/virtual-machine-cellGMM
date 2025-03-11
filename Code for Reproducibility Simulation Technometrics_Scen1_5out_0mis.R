@@ -6,20 +6,12 @@
 ## n = 200, p = 5, G = 2, unbalanced clusters, non-spherical components
 ## 5% outliers, 0% missing
 rm(list = ls())
+setwd("/workspaces/virtual-machine-cellGMM")
 ## INSTALL PACKAGES (IF NECESSARY)
-# install.packages("MASS")
-# install.packages("pracma")
-# install.packages("purrr")
-# install.packages("mvnfast")
-# install.packages("cellWise")
-# install.packages("mclust")
-# install.packages("tclust")
-# install.packages("remotes")
-# remotes::install_version("snipEM", version = "1.0.1", upgrade = "never")
-# install.packages("MixtureMissing")
-# install.packages("doParallel")
-# install.packages("parallel")
-# install.packages("foreach")
+install.packages("cellWise")
+install.packages("tclust")
+remotes::install_version("snipEM", version = "1.0.1", upgrade = "never")
+install.packages("MixtureMissing")
 
 ## LOAD THE PACKAGES
 library(MASS)
