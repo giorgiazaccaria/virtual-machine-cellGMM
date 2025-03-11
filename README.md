@@ -13,13 +13,12 @@ We have also prepared a **Github Codespac**e that can be used to automatically s
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
 
-1. Click on the following link to set-up your own version of the Codespace: <https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM>.
-   **Warning:** the Machine type option needs to be set equal to 4-core.
-
+1. Click on the following link to set-up your own version of the Codespace: <https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM>, **set** the Machine type option equal to **4-core**, and **click on** the green button named **Create codespace**.
    
-Click on the green button named Create codespace. 
-Wait for the Codespace to be created. This operation takes approximately 5/10 minutes. At the end you should see something like: 
-Click on the Ports tab (which is highlighted in the previous image). You will see something like 
+![image](https://github.com/user-attachments/assets/11992c98-cf65-4d15-9b58-aaf03b4f7af0)
+
+2. Wait for the Codespace to be created. This operation takes approximately 5/10 minutes. At the end you should see something like:
+3. Click on the Ports tab (which is highlighted in the previous image). You will see something like 
 Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon (as displayed in the previous image). This will open a new tab in your browser with the Rstudio Server interface. 
 Login into the Rstudio server using the following credentials:
 Username: rstudio
