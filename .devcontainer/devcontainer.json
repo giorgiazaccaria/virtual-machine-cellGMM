@@ -9,7 +9,7 @@
             "packages": "libudunits2-dev,libxtst6,libxt6,libmagick++-dev"
         },
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-            "packages": "MASS,grDevices,graphics,tclust,Rcpp,rlang,cellWise,reshape2,scales,ggplot2,matrixStats,gridExtra,robustbase,rrcov,svd,shape,pracma,purrr,mvnfast,mclust,remotes,doParallel,parallel,foreach,MixtureMissing,mvtnorm,mnormt,cluster,Bessel,mice"
+            "packages": "pracma,purrr,mvnfast,mclust,remotes,doParallel,parallel,foreach"
         },
     },
     "forwardPorts": [8787, 8888],
