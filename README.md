@@ -4,9 +4,9 @@ This repository is related to the paper _Cellwise outlier detection in heterogen
 Specifically:
 -  "Code for Reproducibility Simulation and Figure Technometrics_EntireScen1" (available in two formats: .Rmd and .html) $\rightarrow$ This script provides the complete simulation study for Scenario 1 with cellwise contamination levels of $0\%$, $5\%$, and $10\%$. It is used to reproduce Figures 1 and 2 of the Main Article for Scenario 1 and runs in approximately 1 hour.
 
--  "Code for Reproducibility Simulation Technometrics_Scen1_5out_0mis.R", $\rightarrow$ This script generates Figures 1 and 2 of the Main Article for all three scenarios. The code starts by loading the file "Data for Figure Reproducibility.RData", which contains the results for the three scenarios presented in the simulation study of the Main Article.
+-  "Code for Reproducibility Simulation Technometrics_Scen1_5out_0mis.R" $\rightarrow$ This is a sub-example of the simulation study for Scenario 1 with $5\%$ of cellwise contamination. At the end of the script, there is a code for reproducing the part of Table 1 in the Main Article corresponding to Scenario 1 with $5\%$ outlying values.
 
-- "Code for Reproducibility Simulation Figure Technometrics_Fast.R" $\rightarrow$ This is a sub-example of the simulation study for Scenario 1 with $5\%$ of cellwise contamination. At the end of the script, there is code for reproducing the part of Table 1 in the Main Article corresponding to Scenario 1 with $5\%$ outlying values.
+- "Code for Reproducibility Simulation Figure Technometrics_Fast.R" $\rightarrow$ This script generates Figures 1 and 2 of the Main Article for all three scenarios. The code starts by loading the file "Data for Figure Reproducibility.RData", which contains the results for the three scenarios presented in the simulation study of the Main Article.
 
 We have also prepared a **Github Codespac**e that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
 
