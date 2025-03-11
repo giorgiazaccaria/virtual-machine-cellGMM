@@ -13,17 +13,18 @@ We have also prepared a **Github Codespac**e that can be used to automatically s
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
 
-1. Click on the following link to set-up your own version of the Codespace: <https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM>, **set** the Machine type option equal to **4-core**, and **click on** the green button named **Create codespace**.
+1. **Click on** <https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM> to set-up your own version of the Codespace; **set** the Machine type option equal to **4-core**, and **click on** the green button named `Create codespace`.
    
-![image](https://github.com/user-attachments/assets/11992c98-cf65-4d15-9b58-aaf03b4f7af0)
+![image](https://github.com/user-attachments/assets/6b2c4137-4ede-4950-ae28-14e7c89a6d83)
 
-2. Wait for the Codespace to be created. This operation takes approximately 5/10 minutes. At the end you should see something like:
-3. Click on the Ports tab (which is highlighted in the previous image). You will see something like 
-Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon (as displayed in the previous image). This will open a new tab in your browser with the Rstudio Server interface. 
-Login into the Rstudio server using the following credentials:
-Username: rstudio
-Password: rstudio
-These operations will create an Rstudio session in your browser. Now you can explore the code and the data interactively!
+2. Wait for the Codespace to be created. This operation takes few minutes. At the end you should see something like the following screen.
+   
+4. Click on the `Ports` tab (which is highlighted in the previous image). Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon (as displayed in the previous image). This will open a new tab in your browser with the Rstudio Server interface.
+   
+5. Login into the Rstudio server using the following credentials:
+Username: `rstudio`
+Password: `rstudio`
+These operations will create an Rstudio session in your browser. Now you can explore the codes interactively!
 
 
 > [!NOTE]
