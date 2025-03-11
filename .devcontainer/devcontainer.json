@@ -1,0 +1,29 @@
+{
+    "name": "R",
+    "image": "ghcr.io/rocker-org/devcontainer/rstudio:4.2.1",
+    "features": {
+        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+            "version": "prerelease"
+        },
+        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+            "packages": "libudunits2-dev,libxtst6,libxt6,libmagick++-dev"
+        },
+        "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+            "packages": "MASS,pracma,purrr,mvnfast,cellWise,mclust,tclust,remotes,MixtureMissing,doParallel,parallel,foreach"
+        },
+    },
+    "forwardPorts": [8787, 8888],
+    "portsAttributes": {
+		    "8787": {
+			    "label": "Rstudio",
+			    "requireLocalPort": true,
+			    "onAutoForward": "ignore"
+		    }
+	  },
+    "customizations": {
+        "codespaces": {
+            "openFiles": ["README.md"]
+        }
+    }, 
+    "postAttachCommand": "sudo rstudio-server start"
+}
