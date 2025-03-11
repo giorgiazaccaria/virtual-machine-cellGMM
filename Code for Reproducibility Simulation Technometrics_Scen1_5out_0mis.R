@@ -173,8 +173,7 @@ internal.cellGMM <- function(X, G, Ug, Permut, tuningp, maxfact, rndstart){
 }
 
 result.cellGMM <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.cellGMM <- foreach (i = 1:nsample, .packages = c("MASS", "tclust", "purrr"), .errorhandling = "pass") %dopar% {
   internal.cellGMM(Xout[[i]], G, Uth, Permut, tuning_param_init, maxfact, rndstart)         
@@ -232,8 +231,7 @@ for (i in 1:nsample) {
 }
 
 result.cellGMM.penopt <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.cellGMM.penopt <- foreach (i = 1:nsample, .packages = c("MASS", "tclust", "purrr"), .errorhandling = "pass") %dopar% {
   internal.cellGMM.penopt(Xout[[i]], G, penalty[[i]], result.cellGMM[[i]]$init, Uth, Permut, tuning_param_init, maxfact, rndstart)
@@ -291,8 +289,7 @@ internal.tclust <- function(X, G, Ug, Permut, maxfact){
 }
 
 result.tclust <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.tclust <- foreach (i = 1:nsample, .packages = c("tclust", "purrr"), .errorhandling = "pass") %dopar% {
   internal.tclust(Xout[[i]], G, Uth, Permut, maxfact)
@@ -354,8 +351,7 @@ internal.sclust.25 <- function(X, G, Ug, Permut, maxfact){
 }
 
 result.sclust.25 <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.sclust.25 <- foreach (i = 1:nsample, .packages = c("snipEM", "purrr", "tclust"), .errorhandling = "pass") %dopar% {
   internal.sclust.25(Xout[[i]], G, Uth, Permut, maxfact)       
@@ -413,8 +409,7 @@ internal.sclust <- function(X, G, Ug, Permut, maxfact){
 }
 
 result.sclust <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.sclust <- foreach (i = 1:nsample, .packages = c("snipEM", "purrr", "tclust"), .errorhandling = "pass") %dopar% {
   internal.sclust(Xout[[i]], G, Uth, Permut, maxfact)       
@@ -453,8 +448,7 @@ internal.MNM <- function(X, G, Ug, Permut){
 }
 
 result.MNM <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.MNM <- foreach (i = 1:nsample, .packages = c("MixtureMissing", "mclust", "purrr"), .errorhandling = "pass") %dopar% {
   internal.MNM(Xout[[i]], G, Uth, Permut)      
@@ -515,8 +509,7 @@ internal.MCNM <- function(X, G, Ug, Permut){
 }
 
 result.MCNM <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.MCNM <- foreach (i = 1:nsample, .packages = c("MixtureMissing", "mclust", "purrr"), .errorhandling = "pass") %dopar% {
   internal.MCNM(Xout[[i]], G, Uth, Permut)      
@@ -576,8 +569,7 @@ internal.MtM <- function(X, G, Ug, Permut){
 }
 
 result.MtM <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.MtM <- foreach (i = 1:nsample, .packages = c("MixtureMissing", "mclust", "purrr"), .errorhandling = "pass") %dopar% {
   internal.MtM(Xout[[i]], G, Uth, Permut)  
@@ -603,8 +595,7 @@ for (samp in 1:nsample) {
 ## SINGLE-POPULATION METHODS
 ## cellMCD (Raymaekers and Rousseeuw, 2023) [R package: cellWise]
 result.cellMCD <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.cellMCD <- foreach (i = 1:nsample, .packages = c("cellWise"), .errorhandling = "pass") %dopar% {
   cellMCD(Xout[[i]], alpha = 0.50, crit = 1e-6, noCits = 500, checkPars = list(coreOnly = TRUE, numDiscrete = 0))       
@@ -618,8 +609,7 @@ for (i in 1:nsample) {
 
 ## DI (Raymaekers and Rousseeuw, 2021) [R package: cellWise]
 result.DI <- vector(mode = "list", length = nsample)
-ncores <- detectCores()
-cl <- makeCluster(ncores - 2)
+cl <- makeCluster(4)
 registerDoParallel(cl)
 result.DI <- foreach (i = 1:nsample, .packages = c("cellWise"), .errorhandling = "pass") %dopar% {
   DI(Xout[[i]], crit = 1e-6, maxits = 500, checkPars = list(coreOnly = TRUE, numDiscrete = 0))
