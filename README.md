@@ -13,7 +13,10 @@ We have also prepared a **Github Codespac**e that can be used to automatically s
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
 
-1. Click on the following link to set-up your own version of the Codespace: https://codespaces.new/agila5/ppm-fire-occurrences. Warning: the Machine type option needs to be set equal to 4-core.
+1. Click on the following link to set-up your own version of the Codespace: <https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM>.
+   **Warning:** the Machine type option needs to be set equal to 4-core.
+
+   
 Click on the green button named Create codespace. 
 Wait for the Codespace to be created. This operation takes approximately 5/10 minutes. At the end you should see something like: 
 Click on the Ports tab (which is highlighted in the previous image). You will see something like 
