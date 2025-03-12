@@ -6,7 +6,7 @@ Specifically:
 
 -  "Code for Reproducibility Simulation Technometrics_Scen1_5out_0mis.R" $\rightarrow$ This is a sub-example of the simulation study for Scenario 1 with $5\%$ of cellwise contamination. At the end of the script, there is a code for reproducing the part of Table 1 in the Main Article corresponding to Scenario 1 with $5\%$ outlying values.
 
-> [!ATTENTION]
+> [!IMPORTANT]
 > The number of samples is currently set to $10$. This increases the computational time. Indeed, the simulations were run on virtual machines with 12 cores, while the one created below has only $4$ cores. The user can change the number of samples up to $100$.
 
 - "Code for Reproducibility Simulation Figure Technometrics_Fast.R" $\rightarrow$ This script generates Figures 1 and 2 of the Main Article for all three scenarios. The code starts by loading the file "Data for Figure Reproducibility.RData", which contains the results for the three scenarios presented in the simulation study of the Main Article.
