@@ -36,10 +36,10 @@ We have prepared a **Github Codespace** that can be used to automatically set-up
 
 ![image](https://github.com/user-attachments/assets/1a6afe6b-73d9-4b13-8186-a6f131ae2419)
    
-7. Login into the Rstudio server using the following credentials:
+7. **Login** into the Rstudio server using the following credentials:
 Username: `rstudio`
 Password: `rstudio`
-These operations will create an Rstudio session in your browser. When the Rstudio session is ready, click on the file "virtual-machine-cellGMM" (bottom-right panel in R Studio). Now you can explore the codes interactively!
+These operations will create an Rstudio session in your browser. When the Rstudio session is ready, **click on** the file "virtual-machine-cellGMM" (bottom-right panel in R Studio). Now you can explore the codes interactively!
 
 > [!NOTE]
 > GitHub Codespaces is paid for either by an organization, an enterprise, or a personal account. The Free and Pro plans for personal accounts include free use of GitHub Codespaces up to a fixed amount of usage every month.
