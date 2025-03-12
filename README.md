@@ -6,6 +6,9 @@ Specifically:
 
 -  "Code for Reproducibility Simulation Technometrics_Scen1_5out_0mis.R" $\rightarrow$ This is a sub-example of the simulation study for Scenario 1 with $5\%$ of cellwise contamination. At the end of the script, there is a code for reproducing the part of Table 1 in the Main Article corresponding to Scenario 1 with $5\%$ outlying values.
 
+> [!ATTENTION]
+> The number of samples is currently set to $10$. This increases the computational time. Indeed, the simulations were run on virtual machines with 12 cores, while the one created below has only $4$ cores. The user can change the number of samples up to $100$.
+
 - "Code for Reproducibility Simulation Figure Technometrics_Fast.R" $\rightarrow$ This script generates Figures 1 and 2 of the Main Article for all three scenarios. The code starts by loading the file "Data for Figure Reproducibility.RData", which contains the results for the three scenarios presented in the simulation study of the Main Article.
 
 We have also prepared a **Github Codespac**e that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
@@ -17,19 +20,22 @@ We have also prepared a **Github Codespac**e that can be used to automatically s
    
 ![image](https://github.com/user-attachments/assets/6b2c4137-4ede-4950-ae28-14e7c89a6d83)
 
-2. Wait for the Codespace to be created. This operation takes few minutes. At the end you should see something like the following screen.
+2. Wait for the Codespace to be created. This operation can take some minutes. Wait until the number 2 appears next to `Ports`. You should see something like the following screen.
    
 ![image](https://github.com/user-attachments/assets/f97af82d-1ac5-4307-bb67-0b54c795cb7e)
    
-4. Click on the `Ports` tab (which is highlighted in the previous image). Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon (as displayed in the previous image). This will open a new tab in your browser with the Rstudio Server interface.
+4. Click on the `Ports` tab (which is highlighted in the previous image). Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon, as displayed in the following image.
+   
+![image](https://github.com/user-attachments/assets/7dd1b898-e1e3-4a62-9db5-acdfc25f4610)
 
+5. The previous action will open a new tab in your browser with the Rstudio Server interface, as follows.
+
+![image](https://github.com/user-attachments/assets/1a6afe6b-73d9-4b13-8186-a6f131ae2419)
    
-   
-6. Login into the Rstudio server using the following credentials:
+7. Login into the Rstudio server using the following credentials:
 Username: `rstudio`
 Password: `rstudio`
-These operations will create an Rstudio session in your browser. Now you can explore the codes interactively!
-
+These operations will create an Rstudio session in your browser. When the Rstudio session is ready, click on the file "virtual-machine-cellGMM" (bottom-right panel in R Studio). Now you can explore the codes interactively!
 
 > [!NOTE]
 > GitHub Codespaces is paid for either by an organization, an enterprise, or a personal account. The Free and Pro plans for personal accounts include free use of GitHub Codespaces up to a fixed amount of usage every month.
