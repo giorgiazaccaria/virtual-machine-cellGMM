@@ -11,7 +11,7 @@ Specifically, the relevant codes for reproducing the analyses are the following:
 
 -  "Code for Reproducibility Simulation and Figure Technometrics_EntireScen1" (available in two formats: .Rmd and .html) $\rightarrow$ This script provides the complete simulation study for Scenario 1 with cellwise contamination levels of $0\%$, $5\%$, and $10\%$. It is used to reproduce Figures 1 and 2 of the Main Article for Scenario 1 and runs in approximately 1 hour.
 
-We have also prepared a **Github Codespace** that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
+We have prepared a **Github Codespace** that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
 
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
