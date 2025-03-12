@@ -2,7 +2,6 @@
 #        Code for replication - Technometrics Review article TCH-24-160        #
 #       Simulation Study - Main Article - Table 1, Scenario 1 (well sep)       #
 ################################################################################
-## ATTENTION: OPEN THIS SCRIPT FROM THE WORKING DIRECTORY OF "Code for Technometrics Reproducibility".
 ## n = 200, p = 5, G = 2, unbalanced clusters, non-spherical components
 ## 5% outliers, 0% missing
 rm(list = ls())
