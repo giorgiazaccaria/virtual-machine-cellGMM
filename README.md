@@ -1,17 +1,17 @@
 # virtual-machine-cellGMM
-This repository is related to the paper _Cellwise outlier detection in heterogeneous populations_ by Giorgia Zaccaria, Luis A. García-Escudero, Francesca Greselin, and Agustín Mayo-Íscar. It contains the codes for reproducing some of the analyses presented in the paper.
+This repository is related to the paper _Cellwise outlier detection in heterogeneous populations_ by Giorgia Zaccaria, Luis A. García-Escudero, Francesca Greselin, and Agustín Mayo-Íscar. It contains the codes for reproducing some of the analyses presented in the paper via a Github Codespace.
 
-Specifically:
--  "Code for Reproducibility Simulation and Figure Technometrics_EntireScen1" (available in two formats: .Rmd and .html) $\rightarrow$ This script provides the complete simulation study for Scenario 1 with cellwise contamination levels of $0\%$, $5\%$, and $10\%$. It is used to reproduce Figures 1 and 2 of the Main Article for Scenario 1 and runs in approximately 1 hour.
-
+Specifically, the relevant codes for reproducing the analyses are the following:
 -  "Code for Reproducibility Simulation Technometrics_Scen1_5out_0mis.R" $\rightarrow$ This is a sub-example of the simulation study for Scenario 1 with $5\%$ of cellwise contamination. At the end of the script, there is a code for reproducing the part of Table 1 in the Main Article corresponding to Scenario 1 with $5\%$ outlying values.
 
 > [!IMPORTANT]
-> The number of samples is currently set to $10$. This increases the computational time. Indeed, the simulations were run on virtual machines with 12 cores, while the one created below has only $4$ cores. The user can change the number of samples up to $100$.
+> The number of samples is currently set to $10$ in the R script, although the simulations in the paper were run on $100$ samples. Increasing the number of samples increases the computational time required for exectuing the code. It is worth noting that the simulations were run on virtual machines with $12$ cores, whereas the one created below has only $4$ cores. The user can change the number of samples up to $100$.
 
 - "Code for Reproducibility Simulation Figure Technometrics_Fast.R" $\rightarrow$ This script generates Figures 1 and 2 of the Main Article for all three scenarios. The code starts by loading the file "Data for Figure Reproducibility.RData", which contains the results for the three scenarios presented in the simulation study of the Main Article.
 
-We have also prepared a **Github Codespac**e that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
+-  "Code for Reproducibility Simulation and Figure Technometrics_EntireScen1" (available in two formats: .Rmd and .html) $\rightarrow$ This script provides the complete simulation study for Scenario 1 with cellwise contamination levels of $0\%$, $5\%$, and $10\%$. It is used to reproduce Figures 1 and 2 of the Main Article for Scenario 1 and runs in approximately 1 hour.
+
+We have also prepared a **Github Codespace** that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
 
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
