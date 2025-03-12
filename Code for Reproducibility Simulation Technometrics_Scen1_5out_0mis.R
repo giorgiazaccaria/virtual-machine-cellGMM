@@ -32,7 +32,7 @@ source("cellGMM.R", echo=TRUE)
 set.seed(17387)
 
 ## PARAMETERS DEPENDING ON THE SCENARIO
-nsample <- 100
+nsample <- 10 
 n.obs <- 200
 G <- 2
 p <- 5
