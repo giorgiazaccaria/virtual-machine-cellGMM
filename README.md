@@ -19,6 +19,9 @@ We have also prepared a **Github Codespac**e that can be used to automatically s
 
 2. Wait for the Codespace to be created. This operation takes few minutes. At the end you should see something like the following screen.
    
+![image](https://github.com/user-attachments/assets/d7ad796f-507f-4d1a-a024-600bd9cc1c6f)
+
+   
 4. Click on the `Ports` tab (which is highlighted in the previous image). Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon (as displayed in the previous image). This will open a new tab in your browser with the Rstudio Server interface.
    
 5. Login into the Rstudio server using the following credentials:
