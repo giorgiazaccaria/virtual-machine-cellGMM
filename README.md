@@ -16,7 +16,7 @@ We have prepared a **Github Codespace** that can be used to automatically set-up
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
 
-1. **Click on** <a href="https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM" target=" ">https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM</a> to set-up your own version of the Codespace; **set** the Machine type option equal to **4-core**, and **click on** the green button named `Create codespace` (see the pictures below).
+1. **Click on** <a href="https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM" target="_blank">https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM</a> to set-up your own version of the Codespace; **set** the Machine type option equal to **4-core**, and **click on** the green button named `Create codespace` (see the pictures below).
    
 ![image](https://github.com/user-attachments/assets/6b2c4137-4ede-4950-ae28-14e7c89a6d83)
 
