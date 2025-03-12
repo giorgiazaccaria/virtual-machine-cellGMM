@@ -16,19 +16,23 @@ We have prepared a **Github Codespace** that can be used to automatically set-up
 > [!WARNING]
 > Please note that you need a Github account to access the Github Codespace.
 
-1. **Click on** <a href="https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM" target="_blank" rel="noopener noreferrer">>https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM</a> to set-up your own version of the Codespace; **set** the Machine type option equal to **4-core**, and **click on** the green button named `Create codespace` (see the pictures below).
-   
+1. **Click** the following link using `Ctrl + Click` (Windows) or `Cmd + Click` (Mac) to set-up your own version of the Codespace in a new tab. 
+
+<a href="https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM" target="_blank" rel="noopener noreferrer">https://codespaces.new/giorgiazaccaria/virtual-machine-cellGMM</a>
+
+2.  **Set** the Machine type option equal to **4-core**, and **click on** the green button named `Create codespace` (see the pictures below).
+
 ![image](https://github.com/user-attachments/assets/6b2c4137-4ede-4950-ae28-14e7c89a6d83)
 
-2. Wait for the Codespace to be created. This operation can take some minutes. Wait until the number 2 appears next to `Ports`. You should see something like the following screen.
+3. Wait for the Codespace to be created. This process may take a few minutes. Wait until the number 2 (or greater than 2) appears next to `Ports`. You should see a screen similar to the one below.
    
 ![image](https://github.com/user-attachments/assets/f97af82d-1ac5-4307-bb67-0b54c795cb7e)
    
-4. Click on the `Ports` tab (which is highlighted in the previous image). Drag the mouse over the Forwarded Addresses field in the 8787 port and click on the globe icon, as displayed in the following image.
+5. **Click on** the `Ports` tab, which is highlighted in the previous image. Drag the mouse over the Forwarded Addresses field in the **8787 port** and click on the **globe icon**, as displayed in the following image.
    
 ![image](https://github.com/user-attachments/assets/7dd1b898-e1e3-4a62-9db5-acdfc25f4610)
 
-5. The previous action will open a new tab in your browser with the Rstudio Server interface, as follows.
+6. The previous action will open a new tab in your browser with the Rstudio Server interface, as follows.
 
 ![image](https://github.com/user-attachments/assets/1a6afe6b-73d9-4b13-8186-a6f131ae2419)
    
