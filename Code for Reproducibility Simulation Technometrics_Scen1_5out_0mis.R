@@ -10,7 +10,7 @@ setwd("/workspaces/virtual-machine-cellGMM")
 install.packages("cellWise")
 install.packages("tclust")
 remotes::install_version("snipEM", version = "1.0.1", upgrade = "never")
-remotes::install_version("MixtureMissing", version = "2.0.0", upgrade = "never")
+remotes::install_version("MixtureMissing", version = "1.0.2", upgrade = "never")
 
 ## LOAD THE PACKAGES
 library(MASS)
