@@ -797,9 +797,6 @@ for (samp in 1:nsample) {
   error[samp, 7:9] <- result.cellMCD[[samp]]$error
   error[samp, 10:12] <- result.DI[[samp]]$error
 }
-if (any(KL.sigma == Inf)) {
-  KL.sigma[KL.sigma == Inf] <- NA
-}
 KL.sigma.adj <- matrix(apply(KL.sigma, 2, function(x){mean(x, na.rm = TRUE)}), nrow = 8, G, byrow = TRUE)
 param.stat <- data.frame(count.sample, matrix(apply(ARI, 2, function(x){mean(x, na.rm = TRUE)})), 
                          matrix(apply(Missclass, 2, function(x){mean(x, na.rm = TRUE)})),
