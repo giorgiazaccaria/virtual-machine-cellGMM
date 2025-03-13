@@ -1867,9 +1867,6 @@ FIGURE [Figures 1 (Scenario 1) and Figure 2 (Scenario 1) - Main Article]
 Prepare first the object for ggplot.
 
 ```{r}
-install.packages("ggplot2")
-install.packages("tidyr")
-install.packages("dplyr")
 library(ggplot2)
 library(tidyr)
 library(dplyr)
