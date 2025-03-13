@@ -56,7 +56,7 @@ set.seed(17387)
 Generation of the parameters depending on the scenario.
 
 ```{r}
-nsample <- 100
+nsample <- 10 # This can be changed. The number of samples used in the original simulation is 100.
 n.obs <- 200
 G <- 2
 p <- 5
