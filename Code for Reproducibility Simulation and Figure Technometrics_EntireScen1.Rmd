@@ -6,10 +6,6 @@ date: "March 11, 2025"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ```{r}
 setwd("/workspaces/virtual-machine-cellGMM")
 rm(list = ls())
@@ -20,6 +16,7 @@ Install the packages if necessary (uncomment the following lines).
 ```{r}
 install.packages("cellWise")
 install.packages("tclust")
+install.packages("patchwork")
 remotes::install_version("snipEM", version = "1.0.1", upgrade = "never")
 remotes::install_version("MixtureMissing", version = "1.0.2", upgrade = "never")
 ```
@@ -1870,6 +1867,7 @@ Prepare first the object for ggplot.
 library(ggplot2)
 library(tidyr)
 library(dplyr)
+library(patchwork)
 ## PREPARE THE OBJECT FOR ggplot
 stat_ggplot_prepared <- stat_ggplot
 stat_ggplot_prepared$Scenario <- as.factor(stat_ggplot_prepared$Scenario)
