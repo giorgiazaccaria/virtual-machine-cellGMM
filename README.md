@@ -9,10 +9,7 @@ Specifically, the relevant codes for reproducing the analyses are the following:
 
 - "Code for Reproducibility Simulation Figure Technometrics_Fast.R" $\rightarrow$ This script generates Figures 1 and 2 of the Main Article for all three scenarios. The code starts by loading the file "Data for Figure Reproducibility.RData", which contains the results for the three scenarios presented in the simulation study of the Main Article.
 
--  "Code for Reproducibility Simulation and Figure Technometrics_EntireScen1" (available in two formats: .Rmd and .html) $\rightarrow$ This script provides the complete simulation study for Scenario 1 with cellwise contamination levels of $0\%$, $5\%$, and $10\%$. It is used to reproduce Figures 1 and 2 of the Main Article for Scenario 1 and runs in approximately 1 hour.
-
->  [!NOTE]
-> In the .Rmd file, the number of samples is currently set to $10$ for the reasons explained before. **The .html file was obtained running the .Rmd with $100$ samples on the virtual machine used for all the simulations, which has $12$ cores ($10$ of which were used for the implementation of the code.**
+-  "Code for Reproducibility Simulation and Figure Technometrics_EntireScen1.html" $\rightarrow$ This .html file provides the complete simulation study for Scenario 1 with cellwise contamination levels of $0\%$, $5\%$, and $10\%$. It is used to reproduce Figures 1 and 2 of the Main Article for Scenario 1 and runs in approximately 1 hour on a laptop with $12$ cores  ($10$ of which were used for the implementation of the code.
 
 We have prepared a **Github Codespace** that can be used to automatically set-up an Rstudio Server and explore the codes in an interactive way. Instructions to access the Github Codespace are reported below.
 
