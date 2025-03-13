@@ -9,7 +9,7 @@
             "packages": "libudunits2-dev,libxtst6,libxt6,libmagick++-dev"
         },
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-            "packages": "pracma,purrr,mvnfast,mclust,remotes,doParallel,parallel,foreach"
+            "packages": "pracma,purrr,mvnfast,mclust,remotes,doParallel,parallel,foreach,tidyverse"
         },
     },
     "forwardPorts": [8787, 8888],
