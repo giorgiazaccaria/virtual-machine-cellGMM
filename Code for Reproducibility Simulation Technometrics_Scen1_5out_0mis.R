@@ -816,7 +816,6 @@ rownames(stat.W) <- c("cellGMM.pen0", "cellGMM.penb", "TCLUST", "sclust_25", "sc
 ## REPRESENTATION
 
 ## TABLE [Table 1, Scenario 1, 5% outliers - Main Article]
-# install.packages("xtable") # If necessary
 library(xtable)
 xtable(stat.W)
 
