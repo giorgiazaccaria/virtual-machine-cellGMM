@@ -34,7 +34,7 @@ We have prepared a **Github Codespace** that can be used to automatically set-up
 
 6. The previous action will open a new tab in your browser with the Rstudio Server interface, as follows.
 
-![image](https://github.com/user-attachments/assets/1a6afe6b-73d9-4b13-8186-a6f131ae2419)
+![image](https://github.com/user-attachments/assets/759db5a3-dbcc-4533-b63b-80fbfe79effb)
    
 7. **Login** into the Rstudio server using the following credentials:
 Username: `rstudio`
