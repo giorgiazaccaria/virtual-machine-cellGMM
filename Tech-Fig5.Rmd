@@ -1,0 +1,129 @@
+---
+title: "Code for reproducibility"
+subtitle: Paper "Cellwise outlier detection in heterogeneous populations" by Zaccaria, G., García-Escudero, L.A., Greselin, F., Mayo-Íscar, A.- Carina Nebula Data Analysis - Main Article - Section 4.2 - Figure 5
+author: "Zaccaria, G."
+date: "April 16, 2025"
+output: html_document
+---
+
+This file reproduces the analysis reported in Section 4.2 of the Main Article to obtain Figure 5. Estimated computation time: 20–60 minutes.
+
+```{r}
+rm(list = ls())
+```
+
+Load the necessary packages.
+
+```{r, echo = TRUE, results = 'hide', warning = FALSE}
+required_packages <- c("png", "cellWise", "tclust", "purrr")
+for (package in required_packages) {
+  if (!require(package, character.only = TRUE)) {
+    message(paste("Package", package, "is not installed. Attempting to install now."))
+    install.packages(package)
+  }
+  library(package, character.only = TRUE)
+}
+```
+
+Load the *cellGMM* code.
+
+```{r, echo = TRUE, results = 'hide'}
+source("cellGMM.R", echo = TRUE)
+```
+
+Load the reduced image (60 x 35 pixels).
+
+```{r}
+image.cnr <- readPNG("Carina Nebula_Reduced.png")
+dm <- dim(image.cnr)
+rgb.cnr <- data.frame(x = rep(1:dm[2], each = dm[1]),
+                      y = rep(dm[1]:1, dm[2]),
+                      r.value = as.vector(image.cnr[, , 1]),
+                      g.value = as.vector(image.cnr[, , 2]),
+                      b.value = as.vector(image.cnr[, , 3]))
+cnr <- rgb.cnr[, c("r.value", "g.value", "b.value")]
+cnr.original <- cnr
+```
+
+Contaminate the image with $3\%$ of cellwise outliers.
+
+```{r}
+set.seed(2)
+alpha.out <- 0.03
+n.obs <- dim(cnr)[1]
+p <- dim(cnr)[2]
+N <- n.obs*p
+frac <- floor(N*alpha.out)
+cont <- sample(N, frac)
+cnr <- cnr.original
+cnr <- matrix(unlist(cnr), n.obs, p)
+cnr[cont] <- 1
+cnr <- data.frame(cnr)
+```
+
+Run *cellGMM* with $G = 5$.
+
+```{r, echo = TRUE, results = 'hide', warning = FALSE, message = FALSE}
+# Set tuning parameters.
+alpha_tclust <- alpha.out*2
+alpha_1 = alpha_2 <- alpha.out
+alpha.A1 <- alpha.out
+alpha.A2 <- alpha.out*2
+nrep <- 40
+nstart <- 10
+niter <- 10
+tuning_param_init <- data.frame(alpha_tclust, alpha_1, alpha_2, alpha.A1, alpha.A2,
+                                nrep, nstart, niter)
+rndstart <- 5
+
+# Run the cellGMM code.
+start_time <- Sys.time()
+cellGMM.G5 <- cellGMM(cnr, G = 5, tuning_param_init, maxfact = 50, rndstart = rndstart, showprogress = FALSE)
+# Run cellGMM with penalty.
+penalty_G5 <- matrix(0, nrow = dim(cnr)[1], ncol = dim(cnr)[2])
+for (ii in 1:dim(cnr)[1]) {
+  logEst <- matrix(0, 1, dim(cnr)[2])
+  for (g in 1:5) {
+    logEst <- logEst + cellGMM.G5$post[ii, g]*log(diag(solve(cellGMM.G5$sigma[[g]])))
+  }
+  penalty_G5[ii, ] <- 0.5 * (- logEst + qchisq(p = 0.99, df = 1))
+}
+cellGMM.G5b <- cellGMM(cnr, G = 5, tuning_param_init, penalty = penalty_G5, maxfact = 50, rndstart = rndstart, showprogress = FALSE)
+end_time <- Sys.time()
+
+# Running time.
+elapsed_time <- difftime(end_time, start_time, units = "mins")  
+message(sprintf("cellGMM has run in %.2f minutes", as.numeric(elapsed_time)))
+```
+
+Run *cellMCD* and *DI*.
+
+```{r}
+cellMCD.cnr <- cellMCD(cnr, alpha = 0.75, crit = 1e-6, noCits = 500, checkPars = list(coreOnly = TRUE, numDiscrete = 0))
+DI.cnr <- DI(cnr, crit = 1e-6, maxits = 500, checkPars = list(coreOnly = TRUE, numDiscrete = 0))
+```
+
+Reproduce Figure 5.
+
+```{r}
+# Contaminated
+pair.cnr <- cnr
+colnames(pair.cnr) <- c("R", "G", "B")
+pairs(pair.cnr, col = rgb(pair.cnr), xlim = c(0, 1), ylim = c(0, 1))
+
+# cellGMM with G = 5
+colnames(cellGMM.G5b$X.imputed.best) <- c("R", "G", "B")
+pairs(cellGMM.G5b$X.imputed.best, col = rgb(cellGMM.G5b$X.imputed.best), xlim = c(0, 1), ylim = c(0, 1))
+
+# cellMCD
+colnames(cellMCD.cnr$Ximp) <- c("R", "G", "B")
+pairs(cellMCD.cnr$Ximp, col = rgb(cellMCD.cnr$Ximp), xlim = c(0, 1), ylim = c(0, 1))
+
+# DI
+colnames(DI.cnr$Ximp) <- c("R", "G", "B")
+pairs(DI.cnr$Ximp, col = rgb(DI.cnr$Ximp), xlim = c(0, 1), ylim = c(0, 1))
+```
+
+```{r}
+print("Done!")
+```
