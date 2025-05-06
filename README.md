@@ -45,7 +45,7 @@ Username: `rstudio`
 Password: `rstudio`
 These operations will create an Rstudio session in your browser. When the Rstudio session is ready, **click on** the file "virtual-machine-cellGMM" (bottom-right panel in R Studio). Now you can explore the codes interactively!
 
-> [!ATTENTION]
+> [!IMPORTANT]
 > Please note that the code was run on machines with 12 cores, whereas the GitHub Codespace has only 4 cores. Therefore, you should expect longer runtimes when using the Github Codespace.
 
 > [!NOTE]
